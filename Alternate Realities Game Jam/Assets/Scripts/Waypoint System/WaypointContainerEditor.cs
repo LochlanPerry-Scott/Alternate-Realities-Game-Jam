@@ -107,7 +107,7 @@ public class WaypointContainerEditor : Editor
 
                 selectedNode = selectedObject.nodeList[i];
                 selectedNode.connectedTo.Clear();                
-                selectedNode.SetConnections();
+                //selectedNode.SetConnections();
             }
 
             selectedObject.nodeList.Clear();
@@ -151,7 +151,7 @@ public class WaypointContainerEditor : Editor
             Waypoint currentNode = selectedObject.nodeList[i];
 
             currentNode.connectedTo = NodesToConnect(currentNode, selectedObject.nodeList);
-            currentNode.SetConnections();
+            //currentNode.SetConnections();
         }
     }
 }

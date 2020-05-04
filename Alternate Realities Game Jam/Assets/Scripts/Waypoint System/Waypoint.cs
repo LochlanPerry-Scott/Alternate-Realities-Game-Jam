@@ -13,7 +13,7 @@ public class Waypoint : MonoBehaviour
     [Space]
     [HideInInspector] public Color nodeColor;
 
-    public void SetConnections()
+    public void SetConnections(List<Waypoint> nodesList)
     {
         node = transform;
 

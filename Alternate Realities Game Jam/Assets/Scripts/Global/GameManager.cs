@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public AstarPath pathfindingReferance;
+
     [SerializeField] private List<Enemy> enemies = new List<Enemy>();
 
     public void UpdateWorldTurn()
