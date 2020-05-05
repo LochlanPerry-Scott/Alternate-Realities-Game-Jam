@@ -63,6 +63,29 @@ public class WaypointCreator : MonoBehaviour
         nodePositions.Remove(nodeToRemove);
     }
 
+    public bool SearchForNodeAtPos(Vector3 hitPos)
+    {
+        //float distBtwn = Vector3.Distance((Vector3)nodePos.position, hitPos);
+        //if(distBtwn < 1)
+        //{
+        //    //for (int i = 0; i < nodePositions.Count; i++)
+        //    //{
+
+        //    //}
+
+        //    return true;
+        //}
+
+        for (int i = 0; i < nodePositions.Count; i++)
+        {
+            if ((Vector3)nodePositions[i].nodePosition == hitPos)
+                return true;
+        }
+
+        //Debug.LogError("Node Error");
+        return false;
+    }
+
     public void SearchSurroundingNodes()
     {
         List<Waypoint> nodeWaypoints = NodeData2Waypoint(nodePositions);
