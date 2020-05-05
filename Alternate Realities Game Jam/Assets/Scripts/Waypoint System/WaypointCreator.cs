@@ -6,6 +6,7 @@ using Pathfinding;
 public class WaypointCreator : MonoBehaviour
 {
     public System.Action OnUpdateNode;
+    public System.Action OnBeginNodeCreation;
 
     public GameObject nodePrefab;
 
@@ -13,37 +14,53 @@ public class WaypointCreator : MonoBehaviour
 
     public static List<NodeData> nodePositions = new List<NodeData>();
 
+    private bool hasBeganPool = false;
+
+    public bool isStartNode = false;
+    public bool isEndNode = false;
+    [Space]
+    public bool worldContainsStartNode = false;
+    public bool worldContainsEndNode = false;
+
     public void Initialize()
     {
         OnUpdateNode += SearchSurroundingNodes;
+        OnBeginNodeCreation += BeginPool;
         //ObjectPooling.Init();
     }
 
     public void BeginPool()
     {
-        ObjectPooling.Init("Node", nodePrefab, AstarPath.active.data.gridGraph.width * AstarPath.active.data.gridGraph.width, transform);
+        Debug.Log("Generate Pool");
+        //ObjectPooling.Init("Node", nodePrefab, 10 /* AstarPath.active.data.gridGraph.width * AstarPath.active.data.gridGraph.width */, transform);
+        hasBeganPool = true;
     }
 
     public void RemoveNodes()
     {
-        foreach (NodeData node in nodePositions)
+        for (int i = 0; i < nodePositions.Count; i++)
         {
-            node.nodeObject.gameObject.SetActive(false);
-            nodePositions.Remove(node);
+            nodePositions[i].nodeObject.ResetConnections();
+            Pooling.TryPool(nodePositions[i].nodeObject.gameObject);
         }
 
-        // Should add to pool
+        nodePositions.Clear();
     }
 
     public void RemoveNodeFromData(NodeData nodeToRemove)
     {
-        if(nodePositions.Contains(nodeToRemove))
+        if(nodeToRemove.isEnd)
         {
-            nodeToRemove.nodeObject.gameObject.SetActive(false);
-            nodePositions.Remove(nodeToRemove);
+            worldContainsEndNode = false;
+        }
+        else if(nodeToRemove.isStart)
+        {
+            worldContainsStartNode = false;
         }
 
-        // Should add to pool
+        Pooling.TryPool(nodeToRemove.nodeObject.gameObject);
+
+        nodePositions.Remove(nodeToRemove);
     }
 
     public void SearchSurroundingNodes()
@@ -102,4 +119,6 @@ public class NodeData
 {
     public Int3 nodePosition;
     public Waypoint nodeObject;
+
+    public bool isStart, isEnd = false;
 }

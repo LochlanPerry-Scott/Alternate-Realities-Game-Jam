@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5475136746798636547
 Transform:
   m_ObjectHideFlags: 0
@@ -452,8 +452,9 @@ GameObject:
   - component: {fileID: 6770149845162621107}
   - component: {fileID: 2315986580111034038}
   - component: {fileID: 128842850947239703}
+  - component: {fileID: 360783849322585977}
   m_Layer: 0
-  m_Name: Waypoint
+  m_Name: Node
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -532,7 +533,22 @@ MonoBehaviour:
   - {fileID: 4344982295999661067}
   connectedTo:
   - {fileID: 0}
+  isStartNode: 0
+  isEndNode: 0
   nodeColor: {r: 1, g: 1, b: 1, a: 0.5686275}
+--- !u!114 &360783849322585977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5350266874562309272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b41f646aa773c044a374213ddede972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolableID: 0
 --- !u!1 &7513484132497557948
 GameObject:
   m_ObjectHideFlags: 0

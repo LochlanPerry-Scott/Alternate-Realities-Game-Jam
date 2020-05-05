@@ -181,7 +181,7 @@ namespace Pathfinding {
 		/// Switches between using world space and using local space.
 		/// Deprecated: World space can no longer be used as it does not work well with rotated graphs. Use transform.InverseTransformPoint to transform points to local space.
 		/// </summary>
-		[System.ObsoleteAttribute("World space can no longer be used as it does not work well with rotated graphs. Use transform.InverseTransformPoint to transform points to local space.", true)]
+		[System.Obsolete("World space can no longer be used as it does not work well with rotated graphs. Use transform.InverseTransformPoint to transform points to local space.", true)]
 		void ToggleUseWorldSpace () {
 		}
 
@@ -189,7 +189,7 @@ namespace Pathfinding {
 		/// Lock all points to a specific Y value.
 		/// Deprecated: The Y coordinate is no longer important. Use the position of the object instead.
 		/// </summary>
-		[System.ObsoleteAttribute("The Y coordinate is no longer important. Use the position of the object instead", true)]
+		[System.Obsolete("The Y coordinate is no longer important. Use the position of the object instead", true)]
 		public void LockToY () {
 		}
 
@@ -301,7 +301,7 @@ namespace Pathfinding {
 
 		/// <summary>Draws some gizmos</summary>
 		void OnDrawGizmos (bool selected) {
-			Color c = selected ? new Color(227/255f, 61/255f, 22/255f, 1.0f) : new Color(227/255f, 61/255f, 22/255f, 0.9f);
+			Color c = selected ? new Color(227/255f, 61/255f, 220/255f, 1.0f) : new Color(227/255f, 61/255f, 22/255f, 0.9f);
 
 			if (selected) {
 				Gizmos.color = Color.Lerp(c, new Color(1, 1, 1, 0.2f), 0.9f);

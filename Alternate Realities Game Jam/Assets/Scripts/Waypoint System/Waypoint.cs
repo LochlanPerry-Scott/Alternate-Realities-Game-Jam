@@ -11,7 +11,22 @@ public class Waypoint : MonoBehaviour
     public Transform[] nodeConnectorPivots;
     public List<Waypoint> connectedTo = new List<Waypoint>();
     [Space]
+
+    public bool isStartNode = false;
+    public bool isEndNode = false;
+
     [HideInInspector] public Color nodeColor;
+
+    public void ResetConnections()
+    {
+        for (int i = 0; i < nodeConnectorPivots.Length; i++)
+        {
+            Transform nodeConnection = nodeConnectorPivots[i];
+            nodeConnection.gameObject.SetActive(false);
+        }
+
+        connectedTo.Clear();
+    }
 
     public void SetConnections(List<Waypoint> nodesList)
     {
